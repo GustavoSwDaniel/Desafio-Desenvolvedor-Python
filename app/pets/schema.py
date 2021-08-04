@@ -11,3 +11,10 @@ class RegisterPetSchema(Schema):
     @post_load
     def make_pet(self, data, **kwargs):
         return Pets(**data)
+
+
+class DetailsPetSchema(Schema):
+    name_pet = fields.String(data_key='namePets')
+    pet_owner_name = fields.String(data_key='petOwnerName')
+    breed = fields.String()
+    birth_date = fields.String(data_key='birthDate')
