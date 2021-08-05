@@ -29,3 +29,10 @@ def update_pet(pet_id: int, update_date: dict) -> Pets:
     db.session.add(pet_data)
     db.session.commit()
     return pet_data
+
+
+def remove_pet(pet_id: int):
+    pet = get_pet_by_id(pet_id=pet_id)
+
+    db.session.delete(pet)
+    db.session.commit()
