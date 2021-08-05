@@ -30,3 +30,12 @@ def update_pet(pet_id):
         return jsonify(pets_schema.DetailsPetSchema().dump(pets_service.update_pet(pet_id, data_update))), 200
     except ObjectDoesNotFoundError as error:
         abort(404, error.message)
+
+
+@bp.route('/pet/<int:pet_id>', methods=['DELETE'])
+def remove_pet(pet_id):
+    try:
+        pets_service.remove_pet(pet_id)
+        return '', 200
+    except ObjectDoesNotFoundError as error:
+        abort(404, error.message)
