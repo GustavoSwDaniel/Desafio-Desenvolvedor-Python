@@ -31,3 +31,15 @@ class PetsTestControllerCase(BaseTestCase):
         self.assertIn('namePets', response_json)
         self.assertIn('petOwnerName', response_json)
 
+    def test_get_pet(self):
+        when(pets_service).get_pet_by_id(...).thenReturn(self.pets_register)
+        response = self.client().get('/pet/1')
+        response_json = response.get_data(as_text=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('birthDate', response_json)
+        self.assertIn('breed', response_json)
+        self.assertIn('namePets', response_json)
+        self.assertIn('petOwnerName', response_json)
+
+
