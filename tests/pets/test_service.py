@@ -1,6 +1,7 @@
 from tests.base import BaseTestCase
 from app.pets.models import Pets
 from app.pets import service as pets_service
+from app.commons.exceptions import ObjectDoesNotFoundError
 
 
 class PetsTestServiceCase(BaseTestCase):
@@ -32,3 +33,6 @@ class PetsTestServiceCase(BaseTestCase):
 
             self.assertIsInstance(response, Pets)
 
+    def test_get_pet_by_id_does_not_found(self):
+        with self.app.app_context():
+            self.assertRaises(ObjectDoesNotFoundError, pets_service.get_pet_by_id, 500)
