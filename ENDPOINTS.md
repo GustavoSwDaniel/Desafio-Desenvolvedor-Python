@@ -41,3 +41,23 @@
     "pet_owner_name": "Mel"
 }
 ```
+
+---
+### PUT .../pet/<pet_id:int>/
+ Endpoint para atualizar as informações do pet
+
+**Request body**
+```json
+{
+    "namePets": "Gustavo D",
+}
+```
+**Response body 201**
+```json
+{
+    "birthDate": "2017",
+    "breed": "ciames",
+    "namepet": "Gustavo D",
+    "petOwnerName": "Mel"
+}
+```
