@@ -84,3 +84,8 @@ class PetsTestControllerCase(BaseTestCase):
 
         self.assertEqual(response.status_code, 200)
 
+    def test_remove_pet_does_not_found(self):
+        when(pets_service).remove_pet(...).thenRaise(ObjectDoesNotFoundError(message="Pet does not found"))
+        response = self.client().delete('/pet/100', content_type='application/json')
+
+        self.assertEqual(response.status_code, 404)
