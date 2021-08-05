@@ -57,3 +57,6 @@ class PetsTestServiceCase(BaseTestCase):
 
             self.assertRaises(ObjectDoesNotFoundError, pets_service.get_pet_by_id, 2)
 
+    def test_remove_pet_with_pet_does_not_found(self):
+        with self.app.app_context():
+            self.assertRaises(ObjectDoesNotFoundError, pets_service.remove_pet, 100)
