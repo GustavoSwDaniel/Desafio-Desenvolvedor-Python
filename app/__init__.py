@@ -23,4 +23,7 @@ def create_app(config_name=os.environ.get('CONFIG_NAME', 'development')):
     from app.pets import  bp as pets_bp
     app.register_blueprint(pets_bp)
 
+    from app.commons import bp as commons_bp
+    app.register_blueprint(commons_bp)
+
     return app
