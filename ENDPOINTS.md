@@ -19,10 +19,10 @@
 **Response body 201**
 ```json
 {
-    "birth_date": "2017",
+    "birthDate": "2017",
     "breed": "ciames",
-    "name_pet": "Gustavo",
-    "pet_owner_name": "Mel"
+    "namePet": "Gustavo",
+    "petOwnerName": "Mel"
 }
 ```
 ---
@@ -35,10 +35,10 @@
 **Response body 201**
 ```json
 {
-    "birth_date": "2017",
+    "birthDate": "2017",
     "breed": "ciames",
-    "name_pet": "Gustavo",
-    "pet_owner_name": "Mel"
+    "namePet": "Gustavo",
+    "petOwnerName": "Mel"
 }
 ```
 
