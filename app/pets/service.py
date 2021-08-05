@@ -16,3 +16,16 @@ def get_pet_by_id(pet_id: int) -> Pets:
         return pet
 
     raise ObjectDoesNotFoundError(message="Pet does not found")
+
+
+def update_pet(pet_id: int, update_date: dict) -> Pets:
+    pet_data = get_pet_by_id(pet_id=pet_id)
+
+    editable_attributes = ['name_pet', 'pet_owner_name', 'breed', 'birth_date']
+
+    list(map(lambda attribute: setattr(pet_data, attribute, update_date[attribute]), filter(
+        lambda element: element in update_date, editable_attributes)))
+
+    db.session.add(pet_data)
+    db.session.commit()
+    return pet_data
