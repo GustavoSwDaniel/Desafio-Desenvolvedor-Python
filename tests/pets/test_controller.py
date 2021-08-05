@@ -1,9 +1,11 @@
 import json
 
-from tests.base import BaseTestCase
-from app.pets.models import Pets
-from app.pets import service as pets_service
 from mockito import when
+
+from app.commons.exceptions import ObjectDoesNotFoundError
+from app.pets import service as pets_service
+from app.pets.models import Pets
+from tests.base import BaseTestCase
 
 
 class PetsTestControllerCase(BaseTestCase):
@@ -42,4 +44,8 @@ class PetsTestControllerCase(BaseTestCase):
         self.assertIn('namePets', response_json)
         self.assertIn('petOwnerName', response_json)
 
+    def test_get_pet_does_not_found(self):
+        when(pets_service).get_pet_by_id(...).thenRaise(ObjectDoesNotFoundError(message="Pet does not found"))
+        response = self.client().get('/pet/100')
 
+        self.assertEqual(response.status_code, 404)
