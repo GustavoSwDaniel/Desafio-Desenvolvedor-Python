@@ -77,3 +77,10 @@ class PetsTestControllerCase(BaseTestCase):
                                      content_type='application/json')
 
         self.assertEqual(response.status_code, 404)
+
+    def test_remove_pet(self):
+        when(pets_service).remove_pet(...).thenReturn(None)
+        response = self.client().delete('/pet/100', content_type='application/json')
+
+        self.assertEqual(response.status_code, 200)
+
