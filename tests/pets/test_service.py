@@ -36,3 +36,13 @@ class PetsTestServiceCase(BaseTestCase):
     def test_get_pet_by_id_does_not_found(self):
         with self.app.app_context():
             self.assertRaises(ObjectDoesNotFoundError, pets_service.get_pet_by_id, 500)
+
+    def test_update_pets(self):
+        update_date = {
+            'pet_owner_name': 'Gustavo D'
+        }
+        with self.app.app_context():
+            response = pets_service.update_pet(2, update_date)
+
+            self.assertNotEqual(response.pet_owner_name, self.pets_registered.pet_owner_name)
+            self.assertEqual(response.pet_owner_name, update_date['pet_owner_name'])

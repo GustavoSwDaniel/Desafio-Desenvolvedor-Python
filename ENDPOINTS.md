@@ -19,10 +19,10 @@
 **Response body 201**
 ```json
 {
-    "birth_date": "2017",
+    "birthDate": "2017",
     "breed": "ciames",
-    "name_pet": "Gustavo",
-    "pet_owner_name": "Mel"
+    "namePet": "Gustavo",
+    "petOwnerName": "Mel"
 }
 ```
 ---
@@ -35,9 +35,29 @@
 **Response body 201**
 ```json
 {
-    "birth_date": "2017",
+    "birthDate": "2017",
     "breed": "ciames",
-    "name_pet": "Gustavo",
-    "pet_owner_name": "Mel"
+    "namePet": "Gustavo",
+    "petOwnerName": "Mel"
+}
+```
+
+---
+### PUT .../pet/<pet_id:int>/
+ Endpoint para atualizar as informações do pet
+
+**Request body**
+```json
+{
+    "namePets": "Gustavo D",
+}
+```
+**Response body 201**
+```json
+{
+    "birthDate": "2017",
+    "breed": "ciames",
+    "namepet": "Gustavo D",
+    "petOwnerName": "Mel"
 }
 ```
