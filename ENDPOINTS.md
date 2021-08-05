@@ -52,7 +52,7 @@
     "namePets": "Gustavo D",
 }
 ```
-**Response body 201**
+**Response body 200**
 ```json
 {
     "birthDate": "2017",
