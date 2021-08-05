@@ -20,7 +20,7 @@ class TestingConfig(Config):
 
     # Postgres Database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'postgres://pets_test:pets_test@localhost:5432/pets_test'
+                              'postgresql://postgres2:postgres2@localhost:5432/postgres2'
 
 
 class ProductionConfig(Config):
