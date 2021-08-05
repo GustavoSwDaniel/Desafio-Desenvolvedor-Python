@@ -61,3 +61,13 @@
     "petOwnerName": "Mel"
 }
 ```
+
+### DELETE .../pet/<pet_id:int>/
+ Endpoint para a exclusão de um pet
+
+ **Response body 200**
+```json
+{
+
+}
+```
