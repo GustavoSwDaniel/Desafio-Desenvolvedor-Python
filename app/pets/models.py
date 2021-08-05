@@ -2,6 +2,8 @@ from app import db
 
 
 class Pets(db.Model):
+    __tablename__ = 'pets'
+
     id = db.Column(db.Integer, primary_key=True)
 
     name_pet = db.Column(db.String(250), nullable=True)
