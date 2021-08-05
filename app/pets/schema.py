@@ -18,3 +18,10 @@ class DetailsPetSchema(Schema):
     pet_owner_name = fields.String(data_key='petOwnerName')
     breed = fields.String()
     birth_date = fields.String(data_key='birthDate')
+
+
+class UpdatePetSchema(Schema):
+    name_pet = fields.String(data_key='namePets')
+    pet_owner_name = fields.String(data_key='petOwnerName')
+    breed = fields.String()
+    birth_date = fields.String(data_key='birthDate')
