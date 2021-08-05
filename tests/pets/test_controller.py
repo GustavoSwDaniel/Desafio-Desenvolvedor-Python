@@ -67,3 +67,13 @@ class PetsTestControllerCase(BaseTestCase):
         self.assertIn('namePets', response_json)
         self.assertIn('petOwnerName', response_json)
 
+    def test_update_pet_does_not_found(self):
+        self.data = {
+            'petOwnerName': 'Gustavo D',
+        }
+        
+        when(pets_service).update_pet(...).thenRaise(ObjectDoesNotFoundError(message="Pet does not found"))
+        response = self.client().put('/pet/100',data=json.dumps(self.data),
+                                     content_type='application/json')
+
+        self.assertEqual(response.status_code, 404)
