@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+    db_test:
+        image: postgres
+        environment:
+            - POSTGRES_USER=postgres2 
+            - POSTGRES_DB=postgres2
+            - POSTGRES_PASSWORD=postgres2
+        ports: 
+            - "5432:5432"
+        volumes: 
+            - /var/lib/postgresql/data_tes
