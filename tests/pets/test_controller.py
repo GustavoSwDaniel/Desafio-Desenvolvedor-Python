@@ -49,3 +49,21 @@ class PetsTestControllerCase(BaseTestCase):
         response = self.client().get('/pet/100')
 
         self.assertEqual(response.status_code, 404)
+
+    def test_update_pet(self):
+        self.data = {
+                'petOwnerName': 'Gustavo D',
+            }
+        self.pets_register.pet_owner_name = 'Gustavo D'
+
+        when(pets_service).update_pet(...).thenReturn(self.pets_register)
+        response = self.client().put('/pet/1', data=json.dumps(self.data),
+                                     content_type='application/json')
+        response_json = response.get_data(as_text=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('birthDate', response_json)
+        self.assertIn('breed', response_json)
+        self.assertIn('namePets', response_json)
+        self.assertIn('petOwnerName', response_json)
+
