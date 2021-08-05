@@ -20,3 +20,13 @@ def get_pet(pet_id):
         return jsonify(pets_schema.DetailsPetSchema().dump(pets_service.get_pet_by_id(pet_id))), 200
     except ObjectDoesNotFoundError as error:
         abort(404, error.message)
+
+
+@bp.route('/pet/<int:pet_id>', methods=['PUT'])
+def update_pet(pet_id):
+    try:
+        schema = pets_schema.UpdatePetSchema()
+        data_update = schema.load(request.json)
+        return jsonify(pets_schema.DetailsPetSchema().dump(pets_service.update_pet(pet_id, data_update))), 200
+    except ObjectDoesNotFoundError as error:
+        abort(404, error.message)
