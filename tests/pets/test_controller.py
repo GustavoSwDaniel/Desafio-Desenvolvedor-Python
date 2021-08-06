@@ -89,3 +89,17 @@ class PetsTestControllerCase(BaseTestCase):
         response = self.client().delete('/pet/100', content_type='application/json')
 
         self.assertEqual(response.status_code, 404)
+
+    def test_get_image_pet(self):
+        when(pets_service).get_pet_by_id(...).thenReturn(self.pets_register)
+        response = self.client().get('/pet/image/1')
+        response_json = response.get_data(as_text=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('petPhoto', response_json)
+
+    def test_get_image_pet_does_not_found(self):
+        when(pets_service).get_pet_by_id(...).thenRaise(ObjectDoesNotFoundError(message="Pet does not found"))
+        response = self.client().get('/pet/image/100')
+
+        self.assertEqual(response.status_code, 404)

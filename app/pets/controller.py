@@ -39,3 +39,11 @@ def remove_pet(pet_id):
         return '', 200
     except ObjectDoesNotFoundError as error:
         abort(404, error.message)
+
+
+@bp.route('/pet/image/<int:pet_id>', methods=['GET'])
+def get_image_pet(pet_id):
+    try:
+        return jsonify(pets_schema.DetailsPetSchema(only=('pet_photo',)).dump(pets_service.get_pet_by_id(pet_id))), 200
+    except ObjectDoesNotFoundError as error:
+        abort(404, error.message)

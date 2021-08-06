@@ -103,6 +103,15 @@
     "breed": "ciames",
     "namepet": "Gustavo D",
     "petOwnerName": "Mel",
-    "petPhoto": "amazon.s3/image.png
+    "petPhoto": "amazon.s3/image.png"
 }
 ```
+
+### GET .../pet/image/<pet_id:int>/
+ Endpoint para pegar a imagem do pet
+
+**Response body 200**
+```json
+{
+    "petPhoto": "amazon.s3/image.png"
+}
