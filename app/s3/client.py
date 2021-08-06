@@ -17,7 +17,7 @@ class S3client(object):
 
     def upload_file(self, file, pet_id: int) -> str:
         print('s3_client')
-        key = f"{pet_id}/{file.filename.split('.')[1]}/{file.filename}"
+        key = f"{pet_id}/{file.filename}"
 
         try:
             self.client.upload_fileobj(file, self.s3_bucket_name, key, ExtraArgs={'ACL': 'public-read'})
@@ -25,7 +25,7 @@ class S3client(object):
             logging.error(error)
             raise ClientError
         
-        image_file_url = f'https://{self.s3_bucket_name}.s3.amazonaws.com/{key}'
+        image_file_url = f'https://{self.s3_bucket_name}.s3.{self.aws_region_name}.amazonaws.com/{key}'
 
 
         return image_file_url
