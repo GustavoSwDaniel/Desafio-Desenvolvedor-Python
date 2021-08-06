@@ -14,6 +14,8 @@ class S3TestControllerCase(BaseTestCase):
 
         self.pet_image = {"file": open(f'{absolute_path}/file_test/download.jpeg', 'rb')}
 
+        self.pet_invalid_file = {"file": open(f'{absolute_path}/file_test/invalid_file.css', 'rb')}
+
         self.pet_with_image = Pets(id=1, name_pet='Mel', pet_owner_name='Gustavo',
                                    breed='siames', birth_date=2015, pet_photo='amazon.s3/mel.jpg')
 
@@ -25,3 +27,12 @@ class S3TestControllerCase(BaseTestCase):
 
         self.assertIsNotNone(response.status_code, 200)
         self.assertIn('petPhoto', response_json)
+
+    def test_update_image_file_types_not_accepted(self):
+        when(s3_service).upload_image(...).thenReturn(self.pet_with_image)
+
+        response = self.client().post('/pet/photo/1', content_type='multipart/form-data', data=self.pet_invalid_file)
+        response_json = response.get_data(as_text=True)
+
+        self.assertIsNotNone(response.status_code, 422)
+
