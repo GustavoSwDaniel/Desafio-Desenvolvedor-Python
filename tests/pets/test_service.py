@@ -21,9 +21,9 @@ class PetsTestServiceCase(BaseTestCase):
             self.db.session.refresh(self.pets_registered)
             self.db.session.expunge(self.pets_registered)
 
-    def test_register_pet(self):
+    def test_save_pet(self):
         with self.app.app_context():
-            response = pets_service.register_pet(self.pets_register)
+            response = pets_service.save_pet(self.pets_register)
 
             self.assertIsInstance(response, Pets)
 

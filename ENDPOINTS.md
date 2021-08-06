@@ -12,7 +12,8 @@
     "namePets": "Gustavo",
     "petOwnerName": "Mel",
     "breed": "ciames",
-    "birthDate": "2017"
+    "birthDate": "2017",
+    "petPhoto": null
 }
 ```
 
@@ -22,7 +23,8 @@
     "birthDate": "2017",
     "breed": "ciames",
     "namePet": "Gustavo",
-    "petOwnerName": "Mel"
+    "petOwnerName": "Mel",
+    "petPhoto": null
 }
 ```
 ---
@@ -38,7 +40,8 @@
     "birthDate": "2017",
     "breed": "ciames",
     "namePet": "Gustavo",
-    "petOwnerName": "Mel"
+    "petOwnerName": "Mel",
+    "petPhoto": null
 }
 ```
 
@@ -58,7 +61,8 @@
     "birthDate": "2017",
     "breed": "ciames",
     "namepet": "Gustavo D",
-    "petOwnerName": "Mel"
+    "petOwnerName": "Mel",
+    "petPhoto": null
 }
 ```
 
@@ -69,5 +73,36 @@
 ```json
 {
 
+}
+```
+
+### POST .../pet/photo/<pet_id:int>/
+ Endpoint para adicionar foto ao pet
+
+ **Extensões permitidas**
+
+| Extensão|Descrição|
+|----------|:------:|
+| image/png | PNG  |
+| image/jpeg  | JPG  |
+
+**Content-Type**
+```
+   Content-Type: multipart/form-data; 
+```
+
+**Request file name**
+```
+   file
+```
+
+**Response body 200**
+```json
+{
+    "birthDate": "2017",
+    "breed": "ciames",
+    "namepet": "Gustavo D",
+    "petOwnerName": "Mel",
+    "petPhoto": "amazon.s3/image.png
 }
 ```

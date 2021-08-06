@@ -11,7 +11,7 @@ from app.pets import service as pets_service
 def register_pet():
     schema = pets_schema.RegisterPetSchema()
     pet = schema.load(request.json)
-    return jsonify(pets_schema.DetailsPetSchema().dump(pets_service.register_pet(pet))), 201
+    return jsonify(pets_schema.DetailsPetSchema().dump(pets_service.save_pet(pet))), 201
 
 
 @bp.route('/pet/<int:pet_id>', methods=['GET'])

@@ -1,10 +1,10 @@
-from app import db
+from app import db, pets
 from app.pets.models import Pets
 from werkzeug.security import generate_password_hash
 from app.commons.exceptions import ObjectDoesNotFoundError
 
 
-def register_pet(pet: Pets) -> Pets:
+def save_pet(pet: Pets) -> Pets:
     db.session.add(pet)
     db.session.commit()
     return pet
