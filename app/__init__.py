@@ -26,4 +26,8 @@ def create_app(config_name=os.environ.get('CONFIG_NAME', 'development')):
     from app.commons import bp as commons_bp
     app.register_blueprint(commons_bp)
 
+    from app.s3 import bp as s3_bp
+    app.register_blueprint(s3_bp)
+
+
     return app
