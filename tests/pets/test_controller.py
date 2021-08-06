@@ -22,7 +22,7 @@ class PetsTestControllerCase(BaseTestCase):
                 'breed': 'ciames',
                 'birthDate': '2017'
             }
-        when(pets_service).register_pet(...).thenReturn(self.pets_register)
+        when(pets_service).save_pet(...).thenReturn(self.pets_register)
         response = self.client().post('/pet', data=json.dumps(self.data),
                                       content_type='application/json')
         response_json = response.get_data(as_text=True)
