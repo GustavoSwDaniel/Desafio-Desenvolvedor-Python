@@ -16,7 +16,9 @@ class S3client(object):
                                    aws_secret_access_key=self.aws_secret_access_key)
 
     def upload_file(self, file, pet_id: int) -> str:
-        print('s3_client')
+        if file.content_type == 'image/jpeg':
+            file.filename = f'{pet_id}.jpg'
+
         key = f"{pet_id}/{file.filename}"
 
         try:
